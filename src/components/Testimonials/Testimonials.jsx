@@ -32,6 +32,11 @@ const Testimonials = () => {
           slidesPerGroup={1}
           slidesPerView={3}
           spaceBetween={20}
+          breakpoints={{
+            856: { slidesPerView: 3 },
+            640: { slidesPerView: 2 },
+            0: { slidesPerView: 1 },
+          }}
           className={css.tCarousel}
         >
           {TestimonialsData?.map((testimonial, index) => (

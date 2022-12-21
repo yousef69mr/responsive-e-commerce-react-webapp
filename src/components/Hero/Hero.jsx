@@ -3,8 +3,11 @@ import css from "./Hero.module.css";
 import HeroImg from "../../assets/hero.png";
 import { BsArrowRight } from "react-icons/bs";
 import { RiShoppingBagFill } from "react-icons/ri";
+import { motion } from "framer-motion";
 
 const Hero = () => {
+  const transition = { duration: 3, type: "spring" };
+
   return (
     <div className={css.container}>
       {/* left side */}
@@ -21,9 +24,31 @@ const Hero = () => {
 
       {/***middle side hero image */}
       <div className={css.wrapper}>
-        <div className={css.blueCircle}></div>
-        <img src={HeroImg} alt="Hero_Image" width={600} />
-        <div className={css.cart2}>
+        {/***blue circle */}
+        <motion.div
+          initial={{ bottom: "2rem" }}
+          whileInView={{ bottom: "0rem" }}
+          transition={transition}
+          className={css.blueCircle}
+        ></motion.div>
+
+        {/**Hero image**/}
+        <motion.img
+          transition={transition}
+          initial={{ bottom: "-2rem" }}
+          whileInView={{ bottom: "0rem" }}
+          src={HeroImg}
+          alt="Hero_Image"
+          width={600}
+        />
+
+        {/**Cart div animation**/}
+        <motion.div
+          transition={transition}
+          initial={{ right: "6%" }}
+          whileInView={{ right: "2%" }}
+          className={css.cart2}
+        >
           <RiShoppingBagFill />
           <div className={css.signup}>
             <span>Best Signup Offers</span>
@@ -31,7 +56,7 @@ const Hero = () => {
               <BsArrowRight />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/*** right side */}
